@@ -4,13 +4,15 @@ import (
 	"log"
 
 	"github.com/alberto-valdez/lazy-taxes/internal/handlers"
+	"github.com/alberto-valdez/lazy-taxes/internal/services"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	router := gin.Default()
 
-	userHandler := handlers.NewUserHandler()
+	userService := services.NewItemService()
+	userHandler := handlers.NewUserHandler(userService)
 
 	api := router.Group("/api/v1")
 	{
